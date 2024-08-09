@@ -1,5 +1,5 @@
 using System.Net.Http;
-using SeedVersion;
+using System.Text.Json;
 using SeedVersion.Core;
 
 #nullable enable
@@ -15,21 +15,34 @@ public class UserClient
         _client = client;
     }
 
-    public async Task<User> GetUserAsync(string userId)
+    public async Task<User> GetUserAsync(string userId, RequestOptions? options = null)
     {
         var response = await _client.MakeRequestAsync(
             new RawClient.JsonApiRequest
             {
                 BaseUrl = _client.Options.BaseUrl,
                 Method = HttpMethod.Get,
-                Path = $"/users/{userId}"
+                Path = $"/users/{userId}",
+                Options = options
             }
         );
         var responseBody = await response.Raw.Content.ReadAsStringAsync();
         if (response.StatusCode is >= 200 and < 400)
         {
-            return JsonUtils.Deserialize<User>(responseBody)!;
+            try
+            {
+                return JsonUtils.Deserialize<User>(responseBody)!;
+            }
+            catch (JsonException e)
+            {
+                throw new SeedVersionException("Failed to deserialize response", e);
+            }
         }
-        throw new Exception(responseBody);
+
+        throw new SeedVersionApiException(
+            $"Error with status code {response.StatusCode}",
+            response.StatusCode,
+            JsonUtils.Deserialize<object>(responseBody)
+        );
     }
 }

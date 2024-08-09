@@ -5,6 +5,150 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.9.0] - 2024-08-09
+
+- Feat: A new configuration is introduced to make discriminated union member naming more Pythonic. With V1 union naming, member names change from `<UnionName>_<DiscriminantValue>` to `<DiscriminantValue><UnionName>`. Concretely, union members previously named `Chat_User` will now be named `UserChat` under the new configuration.
+  ```yaml
+  generators:
+    - name: fernapi/fern-python-sdk
+      config:
+        pydantic_config:
+          union_naming: "v1" # Other valid option is: "v0"
+  ```
+
+## [3.8.0] - 2024-08-09
+
+- Improvement: generated SDKs now use ruff for linting and formatting, instead of Black.
+
+## [3.7.0] - 2024-08-08
+
+- Improvement: Python circular referencing types are more robust.
+
+## [3.6.0] - 2024-08-08
+
+- Feat: The generator now respects returning nested properties, these can be specified via:
+
+  In OpenAPI below, we'd like to only return the property `jobId` from the `Job` object we get back from our server to our SDK users:
+
+  ```yaml
+  my/endpoint:
+    get:
+      x-fern-sdk-return-value: jobId
+      response: Job
+  ```
+
+  For a similar situation using the Fern definition:
+
+  ```yaml
+  endpoints:
+    getJob:
+      method: GET
+      path: my/endpoint
+      response:
+        type: Job
+        property: jobId
+  ```
+
+- Fix: The underlying content no longer sends empty JSON bodies, instead it'll pass a `None` value to httpx
+
+## [3.5.1] - 2024-08-05
+
+- Fix: The root type for unions with visitors now has it's parent typed correctly. This allows auto-complete to work once again on the union when it's nested within other pydantic models.
+
+## [3.5.0] - 2024-08-05
+
+- Improvement: The generated SDK now respects the pydantic version flag, generating V1 only code and V2 only code if specified. If not, the SDK is generated as it is today, with compatibility for BOTH Pydantic versions. This cleans up the generated code, and brings back features liked wrapped aliases for V1-only SDKs.
+
+  Pydantic compatibility can be specified through the config below:
+
+  ```yaml
+  generators:
+    - name: fernapi/fern-python-sdk
+      config:
+        pydantic_config:
+          version: "v1" # Other valid options include: "v2" and "both"
+  ```
+
+## [3.4.2] - 2024-08-05
+
+- Fix: The Python generator now instantiates `Any` types as `Optional[Any]` to be able to meet some breaks in Pydantic V2.
+
+## [3.4.1] - 2024-08-04
+
+- Fix: Literal templates are generated if they are union members
+
+## [3.4.0] - 2024-08-02
+
+- Internal: The SDK generator has now been upgraded to use Pydantic V2 internally. Note that
+  there is no change to the generated code, however by leveraging Pydantic V2 you should notice
+  an improvement in `fern generate` times.
+
+## [3.3.4] - 2024-08-02
+
+- Improvement: Aliased literals are also defaulted within Pydantic models, whereas previously only direct literals were defaulted.
+- Improvement: Snippets now provide optional literals in functions and models.
+- Fix: Generated tests that expect an empty result when they are of type `text` (not JSON) now appropriately expect an empty string instead of `None`.
+
+## [3.3.3] - 2024-08-02
+
+- Fix: The generator now allows you to extend aliased types (as long as they're objects).
+
+## [3.3.2] - 2024-08-02
+
+- Fix: regression in readme generation introduced in 3.3.1
+
+## [3.3.1] - 2024-08-02
+
+- Fix: Generated READMEs now reference RequestOptions as TypedDicts correctly.
+
+## [3.3.0-rc1] - 2024-08-01
+
+- Fix: TypedDict snippets now include literals where available.
+
+## [3.3.0-rc0] - 2024-07-31
+
+- internal: Upgrade to IR 53.1.0
+- chore: The Python generator now creates snippet templates for undiscriminated unions.
+
+## [3.2.0-rc1] - 2024-07-29
+
+- Fix: The generated README now imports `ApiError` as if it were from outside the module.
+
+## [3.2.0-rc0] - 2024-07-25
+
+- Improvement: The Python SDK can now be generated such that inputs to requests are TypedDicts, instead of Pydantic models. This allows for consumers of the SDK
+  to continue to have type hinting and autocomplete, but not need to import new object types when creating requests.
+
+  With the following config:
+
+  ```yaml
+  generators:
+    - name: fernapi/fern-python-sdk
+      config:
+        pydantic_config:
+          use_typeddict_requests: true
+  ```
+
+  The usage will change from:
+
+  ```python
+  client\
+      .imdb\
+      .create_movie(
+        request=CreateMovieRequest(title="title", rating=4.3),
+      )
+  ```
+
+  to:
+
+  ```python
+    client\
+      .imdb\
+      .create_movie(
+        request={"title": "title", "rating": 4.3},
+      )
+  ```
+
 ## [3.1.0-rc0] - 2024-07-24
 
 - Improvement: The root client users interact with is now exported from the main `__init__.py`, this allows users to access the client via `from my_sdk import my_sdk_client` as opposed to `from my_sdk.client import my_sdk_client`.

@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v53.5.0] - 2024-08-05 \*\* (TODO: Make required in next major)
+
+- Feature: Support a `hasNextPage` property for offset pagination. 
+
+## [v53.4.0] - 2024-08-05 \*\* (TODO: Make required in next major)
+
+- Feature: Add `User-Agent` header so that SDK generators can start sending the user agent.
+
+## [v53.3.0] - 2024-08-05
+
+- Feature: Add gRPC/Protobuf types (defined in `proto.yml`) to generate gRPC/Protobuf mappers.
+
+## [v53.2.0] - 2024-07-30
+
+- Improvement: The IR now contains an `extendedProperties` field where all properties from extended types are denormalized. This removes logic
+  that generator authors were consistently reimplementing.
+
+## [v53.1.0] - 2024-07-30
+
+- Improvement: The IR now contains the API Definition ID such that the generators may specify this ID when uploading snippet templates. This is necessary for resolving union snippets.
+
+## [v53.0.0] - 2024-07-30
+
+- Feature: Add `float` and `bytes` primitive types.
+- Feature: Add a `PrimitiveTypeV2` variant for every `PrimitiveTypeV1`.
+
 ## [v52.0.0] - 2024-07-23
 
 - Feature: Add `uint` and `uint64` primitive types.

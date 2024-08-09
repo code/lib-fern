@@ -28,7 +28,7 @@ exports[`uint uint docs 1`] = `
           "request": {
             "body": {
               "properties": {
-                "id": "optional<double>",
+                "id": "optional<float>",
                 "value": "optional<uint64>",
               },
             },
@@ -42,14 +42,20 @@ exports[`uint uint docs 1`] = `
           },
         },
       },
+      "source": {
+        "openapi": "uint/openapi.yml",
+      },
     },
     "types": {
       "Response": {
         "docs": "A generic response type used throughout the API.
 ",
         "properties": {
-          "id": "optional<double>",
+          "id": "optional<float>",
           "value": "optional<uint64>",
+        },
+        "source": {
+          "openapi": "uint/openapi.yml",
         },
       },
     },
@@ -92,7 +98,7 @@ exports[`uint uint simple 1`] = `
           "request": {
             "body": {
               "properties": {
-                "id": "optional<double>",
+                "id": "optional<float>",
                 "value": "optional<uint64>",
               },
             },
@@ -106,14 +112,20 @@ exports[`uint uint simple 1`] = `
           },
         },
       },
+      "source": {
+        "openapi": "uint/openapi.yml",
+      },
     },
     "types": {
       "Response": {
         "docs": "A generic response type used throughout the API.
 ",
         "properties": {
-          "id": "optional<double>",
+          "id": "optional<float>",
           "value": "optional<uint64>",
+        },
+        "source": {
+          "openapi": "uint/openapi.yml",
         },
       },
     },

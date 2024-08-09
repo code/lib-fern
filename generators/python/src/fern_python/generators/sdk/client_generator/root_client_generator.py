@@ -18,7 +18,6 @@ from fern_python.generators.sdk.core_utilities.client_wrapper_generator import (
     ConstructorParameter,
 )
 from fern_python.snippet import SnippetRegistry, SnippetWriter
-from fern_python.source_file_factory.source_file_factory import SourceFileFactory
 
 from ..context.sdk_generator_context import SdkGeneratorContext
 from ..environment_generators import (
@@ -241,7 +240,7 @@ class RootClientGenerator:
             for param in constructor_parameters
         ]
 
-        snippet = SourceFileFactory.create_snippet()
+        snippet = self._context.source_file_factory.create_snippet()
         snippet.add_expression(
             generated_root_client.async_instantiation if is_async else generated_root_client.sync_instantiation
         )
@@ -342,7 +341,7 @@ class RootClientGenerator:
             )
             environment_docs = f"{RootClientGenerator.ENVIRONMENT_CONSTRUCTOR_PARAMETER_DOCS}"
             if default_environment is not None:
-                snippet = SourceFileFactory.create_snippet()
+                snippet = self._context.source_file_factory.create_snippet()
 
                 def write_default_environment(writer: AST.NodeWriter) -> None:
                     writer.write("Defaults to ")
@@ -380,7 +379,7 @@ class RootClientGenerator:
             )
             environment_docs = f"{RootClientGenerator.ENVIRONMENT_CONSTRUCTOR_PARAMETER_DOCS}"
             if default_environment is not None:
-                snippet = SourceFileFactory.create_snippet()
+                snippet = self._context.source_file_factory.create_snippet()
 
                 def write_default_environment(writer: AST.NodeWriter) -> None:
                     writer.write("Defaults to ")
@@ -455,7 +454,7 @@ class RootClientGenerator:
                                     import_=AST.ReferenceImport(module=AST.Module.built_in(("os",))),
                                     qualified_name_excluding_import=("getenv",),
                                 ),
-                                args=[AST.Expression(f'"{oauth.client_id_env_var.get_as_str()}"')],
+                                args=[AST.Expression(f'"{oauth.client_id_env_var}"')],
                             )
                         )
                         if oauth.client_id_env_var is not None
@@ -464,7 +463,7 @@ class RootClientGenerator:
                             AST.CodeWriter(
                                 self._get_paramter_validation_writer(
                                     param_name="client_id",
-                                    environment_variable=oauth.client_id_env_var.get_as_str(),
+                                    environment_variable=oauth.client_id_env_var,
                                 )
                             )
                         )
@@ -488,7 +487,7 @@ class RootClientGenerator:
                                     import_=AST.ReferenceImport(module=AST.Module.built_in(("os",))),
                                     qualified_name_excluding_import=("getenv",),
                                 ),
-                                args=[AST.Expression(f'"{oauth.client_secret_env_var.get_as_str()}"')],
+                                args=[AST.Expression(f'"{oauth.client_secret_env_var}"')],
                             )
                         )
                         if oauth.client_secret_env_var is not None
@@ -497,7 +496,7 @@ class RootClientGenerator:
                             AST.CodeWriter(
                                 self._get_paramter_validation_writer(
                                     param_name="client_secret",
-                                    environment_variable=oauth.client_secret_env_var.get_as_str(),
+                                    environment_variable=oauth.client_secret_env_var,
                                 )
                             )
                         )

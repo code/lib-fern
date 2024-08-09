@@ -1,4 +1,3 @@
-// this should be transpiled away as a type
 import type { Readable, Writable } from "stream";
 import { EventCallback, StreamWrapper } from "./chooseStreamWrapper";
 
@@ -21,6 +20,10 @@ export class NodePre18StreamWrapper implements StreamWrapper<Writable, Buffer> {
     public pipe(dest: Writable): Writable {
         this.readableStream.pipe(dest);
         return dest;
+    }
+
+    public pipeTo(dest: Writable): Writable {
+        return this.pipe(dest);
     }
 
     public unpipe(dest?: Writable): void {
@@ -83,5 +86,21 @@ export class NodePre18StreamWrapper implements StreamWrapper<Writable, Buffer> {
     public async json<T>(): Promise<T> {
         const text = await this.text();
         return JSON.parse(text);
+    }
+
+    public [Symbol.asyncIterator](): AsyncIterableIterator<Buffer> {
+        const readableStream = this.readableStream;
+        const iterator = readableStream[Symbol.asyncIterator]();
+
+        // Create and return an async iterator that yields buffers
+        return {
+            async next(): Promise<IteratorResult<Buffer>> {
+                const { value, done } = await iterator.next();
+                return { value: value as Buffer, done };
+            },
+            [Symbol.asyncIterator]() {
+                return this;
+            },
+        };
     }
 }

@@ -2,6 +2,7 @@ import os
 from typing import Optional, Set
 
 from fern_python.codegen import AST, Filepath, Project
+from fern_python.codegen.ast.ast_node.node_writer import NodeWriter
 from fern_python.external_dependencies.pydantic import (
     PYDANTIC_CORE_DEPENDENCY,
     PYDANTIC_DEPENDENCY,
@@ -12,6 +13,7 @@ from fern_python.external_dependencies.pydantic import (
 from fern_python.external_dependencies.typing_extensions import (
     TYPING_EXTENSIONS_DEPENDENCY,
 )
+from fern_python.generators.pydantic_model.field_metadata import FieldMetadata
 from fern_python.source_file_factory import SourceFileFactory
 
 
@@ -20,15 +22,22 @@ class CoreUtilities:
     SYNC_CLIENT_WRAPPER_CLASS_NAME = "SyncClientWrapper"
 
     def __init__(
-        self, allow_skipping_validation: bool, has_paginated_endpoints: bool, version: PydanticVersionCompatibility
+        self,
+        allow_skipping_validation: bool,
+        has_paginated_endpoints: bool,
+        version: PydanticVersionCompatibility,
+        project_module_path: AST.ModulePath,
+        use_typeddict_requests: bool,
     ) -> None:
         self.filepath = (Filepath.DirectoryFilepathPart(module_name="core"),)
         self._module_path = tuple(part.module_name for part in self.filepath)
         # Promotes usage of `from ... import core`
         self._module_path_unnamed = tuple(part.module_name for part in self.filepath[:-1])  # type: ignore
         self._allow_skipping_validation = allow_skipping_validation
+        self._use_typeddict_requests = use_typeddict_requests
         self._has_paginated_endpoints = has_paginated_endpoints
         self._version = version
+        self._project_module_path = project_module_path
 
     def copy_to_project(self, *, project: Project) -> None:
         self._copy_file_to_project(
@@ -125,6 +134,16 @@ class CoreUtilities:
             exports={"encode_query"},
         )
 
+        self._copy_file_to_project(
+            project=project,
+            relative_filepath_on_disk="serialization.py",
+            filepath_in_project=Filepath(
+                directories=self.filepath,
+                file=Filepath.FilepathPart(module_name="serialization"),
+            ),
+            exports={"FieldMetadata", "convert_and_respect_annotation_metadata"},
+        )
+
         if self._has_paginated_endpoints:
             self._copy_file_to_project(
                 project=project,
@@ -170,12 +189,16 @@ class CoreUtilities:
             exports=exports,
         )
 
-    def get_reference_to_api_error(self) -> AST.ClassReference:
+    def get_reference_to_api_error(self, as_snippet: bool = False) -> AST.ClassReference:
+        module_path = self._project_module_path + self._module_path if as_snippet else self._module_path
+        module = (
+            AST.Module.snippet(module_path=(module_path + ("api_error",)))
+            if as_snippet
+            else AST.Module.local(*module_path, "api_error")
+        )
         return AST.ClassReference(
             qualified_name_excluding_import=(),
-            import_=AST.ReferenceImport(
-                module=AST.Module.local(*self._module_path, "api_error"), named_import="ApiError"
-            ),
+            import_=AST.ReferenceImport(module=module, named_import="ApiError"),
         )
 
     def get_oauth_token_provider(self) -> AST.ClassReference:
@@ -239,6 +262,25 @@ class CoreUtilities:
                     named_import=CoreUtilities.SYNC_CLIENT_WRAPPER_CLASS_NAME,
                 ),
             )
+
+    def convert_and_respect_annotation_metadata(
+        self, object_: AST.Expression, annotation: AST.TypeHint
+    ) -> AST.Expression:
+        return AST.Expression(
+            AST.FunctionInvocation(
+                function_definition=AST.Reference(
+                    qualified_name_excluding_import=(),
+                    import_=AST.ReferenceImport(
+                        module=AST.Module.local(*self._module_path, "serialization"),
+                        named_import="convert_and_respect_annotation_metadata",
+                    ),
+                ),
+                kwargs=[
+                    ("object_", object_),
+                    ("annotation", AST.Expression(annotation)),
+                ],
+            )
+        )
 
     def remove_none_from_dict(self, headers: AST.Expression) -> AST.Expression:
         return AST.Expression(
@@ -339,6 +381,16 @@ class CoreUtilities:
             )
         )
 
+    def get_field_metadata(self) -> FieldMetadata:
+        field_metadata_reference = AST.ClassReference(
+            qualified_name_excluding_import=(),
+            import_=AST.ReferenceImport(
+                module=AST.Module.local(*self._module_path, "serialization"), named_import="FieldMetadata"
+            ),
+        )
+
+        return FieldMetadata(reference=field_metadata_reference)
+
     def get_union_metadata(self) -> AST.Reference:
         return AST.Reference(
             qualified_name_excluding_import=(),
@@ -369,22 +421,29 @@ class CoreUtilities:
         )
 
     def _construct_type(self, type_of_obj: AST.TypeHint, obj: AST.Expression) -> AST.Expression:
+        def write_value_being_casted(writer: NodeWriter) -> None:
+            writer.write_reference(self.get_construct_type())
+            writer.write("(")
+            writer.write_newline_if_last_line_not()
+            with writer.indent():
+                writer.write("type_ =")
+                AST.Expression(type_of_obj).write(writer=writer)
+                writer.write(", ")
+                writer.write(" # type: ignore")
+                writer.write_newline_if_last_line_not()
+
+                writer.write("object_ =")
+                obj.write(writer=writer)
+                writer.write_newline_if_last_line_not()
+            writer.write(")")
+
         def write(writer: AST.NodeWriter) -> None:
             writer.write_node(
                 AST.TypeHint.invoke_cast(
                     type_casted_to=type_of_obj,
-                    value_being_casted=AST.Expression(
-                        AST.FunctionInvocation(
-                            function_definition=self.get_construct_type(),
-                            kwargs=[("type_", AST.Expression(type_of_obj)), ("object_", obj)],
-                        )
-                    ),
+                    value_being_casted=AST.Expression(AST.CodeWriter(write_value_being_casted)),
                 )
             )
-
-            # mypy gets confused when passing unions for the Type argument
-            # https://github.com/pydantic/pydantic/issues/1847
-            writer.write_line("# type: ignore")
 
         return AST.Expression(AST.CodeWriter(write))
 
@@ -467,22 +526,29 @@ class CoreUtilities:
         )
 
     def _parse_obj_as(self, type_of_obj: AST.TypeHint, obj: AST.Expression) -> AST.Expression:
+        def write_value_being_casted(writer: NodeWriter) -> None:
+            writer.write_reference(self.get_parse_obj_as())
+            writer.write("(")
+            writer.write_newline_if_last_line_not()
+            with writer.indent():
+                writer.write("type_ =")
+                AST.Expression(type_of_obj).write(writer=writer)
+                writer.write(", ")
+                writer.write(" # type: ignore")
+                writer.write_newline_if_last_line_not()
+
+                writer.write("object_ =")
+                obj.write(writer=writer)
+                writer.write_newline_if_last_line_not()
+            writer.write(")")
+
         def write(writer: AST.NodeWriter) -> None:
             writer.write_node(
                 AST.TypeHint.invoke_cast(
                     type_casted_to=type_of_obj,
-                    value_being_casted=AST.Expression(
-                        AST.FunctionInvocation(
-                            function_definition=self.get_parse_obj_as(),
-                            kwargs=[("type_", AST.Expression(type_of_obj)), ("object_", obj)],
-                        )
-                    ),
+                    value_being_casted=AST.Expression(AST.CodeWriter(write_value_being_casted)),
                 )
             )
-
-            # mypy gets confused when passing unions for the Type argument
-            # https://github.com/pydantic/pydantic/issues/1847
-            writer.write_line("# type: ignore")
 
         return AST.Expression(AST.CodeWriter(write))
 

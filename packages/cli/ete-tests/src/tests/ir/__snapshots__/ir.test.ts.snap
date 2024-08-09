@@ -2,6 +2,7 @@
 
 exports[`ir {"name":"auth-header-prefix"} 1`] = `
 "{
+    "fdrApiDefinitionId": null,
     "apiVersion": null,
     "apiName": {
         "originalName": "my-api",
@@ -112,6 +113,7 @@ exports[`ir {"name":"auth-header-prefix"} 1`] = `
     "webhookGroups": {},
     "websocketChannels": {},
     "readmeConfig": null,
+    "sourceConfig": null,
     "subpackages": {},
     "rootPackage": {
         "fernFilepath": {
@@ -137,7 +139,8 @@ exports[`ir {"name":"auth-header-prefix"} 1`] = `
         "platformHeaders": {
             "language": "X-Fern-Language",
             "sdkName": "X-Fern-SDK-Name",
-            "sdkVersion": "X-Fern-SDK-Version"
+            "sdkVersion": "X-Fern-SDK-Version",
+            "userAgent": null
         }
     }
 }"
@@ -145,6 +148,7 @@ exports[`ir {"name":"auth-header-prefix"} 1`] = `
 
 exports[`ir {"name":"extended-examples"} 1`] = `
 "{
+    "fdrApiDefinitionId": null,
     "apiVersion": null,
     "apiName": {
         "originalName": "api",
@@ -374,12 +378,113 @@ exports[`ir {"name":"extended-examples"} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": [
+                    {
+                        "name": {
+                            "name": {
+                                "originalName": "appId",
+                                "camelCase": {
+                                    "unsafeName": "appId",
+                                    "safeName": "appId"
+                                },
+                                "snakeCase": {
+                                    "unsafeName": "app_id",
+                                    "safeName": "app_id"
+                                },
+                                "screamingSnakeCase": {
+                                    "unsafeName": "APP_ID",
+                                    "safeName": "APP_ID"
+                                },
+                                "pascalCase": {
+                                    "unsafeName": "AppId",
+                                    "safeName": "AppId"
+                                }
+                            },
+                            "wireValue": "appId"
+                        },
+                        "valueType": {
+                            "_type": "named",
+                            "name": {
+                                "originalName": "AppId",
+                                "camelCase": {
+                                    "unsafeName": "appId",
+                                    "safeName": "appId"
+                                },
+                                "snakeCase": {
+                                    "unsafeName": "app_id",
+                                    "safeName": "app_id"
+                                },
+                                "screamingSnakeCase": {
+                                    "unsafeName": "APP_ID",
+                                    "safeName": "APP_ID"
+                                },
+                                "pascalCase": {
+                                    "unsafeName": "AppId",
+                                    "safeName": "AppId"
+                                }
+                            },
+                            "fernFilepath": {
+                                "allParts": [
+                                    {
+                                        "originalName": "commons",
+                                        "camelCase": {
+                                            "unsafeName": "commons",
+                                            "safeName": "commons"
+                                        },
+                                        "snakeCase": {
+                                            "unsafeName": "commons",
+                                            "safeName": "commons"
+                                        },
+                                        "screamingSnakeCase": {
+                                            "unsafeName": "COMMONS",
+                                            "safeName": "COMMONS"
+                                        },
+                                        "pascalCase": {
+                                            "unsafeName": "Commons",
+                                            "safeName": "Commons"
+                                        }
+                                    }
+                                ],
+                                "packagePath": [],
+                                "file": {
+                                    "originalName": "commons",
+                                    "camelCase": {
+                                        "unsafeName": "commons",
+                                        "safeName": "commons"
+                                    },
+                                    "snakeCase": {
+                                        "unsafeName": "commons",
+                                        "safeName": "commons"
+                                    },
+                                    "screamingSnakeCase": {
+                                        "unsafeName": "COMMONS",
+                                        "safeName": "COMMONS"
+                                    },
+                                    "pascalCase": {
+                                        "unsafeName": "Commons",
+                                        "safeName": "Commons"
+                                    }
+                                }
+                            },
+                            "typeId": "type_commons:AppId",
+                            "default": null,
+                            "inline": null
+                        },
+                        "availability": null,
+                        "docs": null
+                    }
+                ]
             },
             "referencedTypes": [
                 "type_commons:Deployment",
                 "type_commons:AppId"
             ],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [
                 {
                     "name": {
@@ -785,6 +890,11 @@ exports[`ir {"name":"extended-examples"} 1`] = `
                 }
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [
                 {
                     "name": {
@@ -994,11 +1104,17 @@ exports[`ir {"name":"extended-examples"} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": []
             },
             "referencedTypes": [
                 "type_commons:AppId"
             ],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -1049,6 +1165,7 @@ exports[`ir {"name":"extended-examples"} 1`] = `
     "webhookGroups": {},
     "websocketChannels": {},
     "readmeConfig": null,
+    "sourceConfig": null,
     "subpackages": {
         "subpackage_app": {
             "name": {
@@ -1229,7 +1346,8 @@ exports[`ir {"name":"extended-examples"} 1`] = `
         "platformHeaders": {
             "language": "X-Fern-Language",
             "sdkName": "X-Fern-SDK-Name",
-            "sdkVersion": "X-Fern-SDK-Version"
+            "sdkVersion": "X-Fern-SDK-Version",
+            "userAgent": null
         }
     }
 }"
@@ -1237,6 +1355,7 @@ exports[`ir {"name":"extended-examples"} 1`] = `
 
 exports[`ir {"name":"file-upload"} 1`] = `
 "{
+    "fdrApiDefinitionId": null,
     "apiVersion": null,
     "apiName": {
         "originalName": "my-api",
@@ -1323,6 +1442,13 @@ exports[`ir {"name":"file-upload"} 1`] = `
             },
             "headers": [],
             "pathParameters": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "transport": {
+                "type": "http"
+            },
             "endpoints": [
                 {
                     "id": "endpoint_file-upload.fileUpload",
@@ -1590,7 +1716,7 @@ exports[`ir {"name":"file-upload"} 1`] = `
                     "autogeneratedExamples": [
                         {
                             "example": {
-                                "url": "",
+                                "url": "/movies",
                                 "rootPathParameters": [],
                                 "servicePathParameters": [],
                                 "endpointPathParameters": [],
@@ -1606,7 +1732,7 @@ exports[`ir {"name":"file-upload"} 1`] = `
                                         "value": null
                                     }
                                 },
-                                "id": "d6c6ed9738b2481b8cf22457a7bb62b68d6eedde",
+                                "id": "2d9028cedc3afcbd39cbb0c21b9674b32c7e66fe",
                                 "docs": null
                             }
                         }
@@ -1656,6 +1782,7 @@ exports[`ir {"name":"file-upload"} 1`] = `
     "webhookGroups": {},
     "websocketChannels": {},
     "readmeConfig": null,
+    "sourceConfig": null,
     "subpackages": {
         "subpackage_file-upload": {
             "name": {
@@ -1757,7 +1884,8 @@ exports[`ir {"name":"file-upload"} 1`] = `
         "platformHeaders": {
             "language": "X-Fern-Language",
             "sdkName": "X-Fern-SDK-Name",
-            "sdkVersion": "X-Fern-SDK-Version"
+            "sdkVersion": "X-Fern-SDK-Version",
+            "userAgent": null
         }
     }
 }"
@@ -7833,6 +7961,7 @@ exports[`ir {"name":"migration","version":"v1"} 1`] = `
 
 exports[`ir {"name":"multiple-environment-urls"} 1`] = `
 "{
+    "fdrApiDefinitionId": null,
     "apiVersion": null,
     "apiName": {
         "originalName": "api",
@@ -7919,6 +8048,13 @@ exports[`ir {"name":"multiple-environment-urls"} 1`] = `
             },
             "headers": [],
             "pathParameters": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "transport": {
+                "type": "http"
+            },
             "endpoints": [
                 {
                     "id": "endpoint_endpoint-urls.test1",
@@ -8124,6 +8260,13 @@ exports[`ir {"name":"multiple-environment-urls"} 1`] = `
             },
             "headers": [],
             "pathParameters": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "transport": {
+                "type": "http"
+            },
             "endpoints": [
                 {
                     "id": "endpoint_service-url.test",
@@ -8347,6 +8490,7 @@ exports[`ir {"name":"multiple-environment-urls"} 1`] = `
     "webhookGroups": {},
     "websocketChannels": {},
     "readmeConfig": null,
+    "sourceConfig": null,
     "subpackages": {
         "subpackage_endpoint-urls": {
             "name": {
@@ -8522,7 +8666,8 @@ exports[`ir {"name":"multiple-environment-urls"} 1`] = `
         "platformHeaders": {
             "language": "X-Fern-Language",
             "sdkName": "X-Fern-SDK-Name",
-            "sdkVersion": "X-Fern-SDK-Version"
+            "sdkVersion": "X-Fern-SDK-Version",
+            "userAgent": null
         }
     }
 }"
@@ -8530,6 +8675,7 @@ exports[`ir {"name":"multiple-environment-urls"} 1`] = `
 
 exports[`ir {"name":"navigation-points-to"} 1`] = `
 "{
+    "fdrApiDefinitionId": null,
     "apiVersion": null,
     "apiName": {
         "originalName": "my-api",
@@ -8600,6 +8746,7 @@ exports[`ir {"name":"navigation-points-to"} 1`] = `
     "webhookGroups": {},
     "websocketChannels": {},
     "readmeConfig": null,
+    "sourceConfig": null,
     "subpackages": {
         "subpackage_subpackage": {
             "name": {
@@ -8819,7 +8966,8 @@ exports[`ir {"name":"navigation-points-to"} 1`] = `
         "platformHeaders": {
             "language": "X-Fern-Language",
             "sdkName": "X-Fern-SDK-Name",
-            "sdkVersion": "X-Fern-SDK-Version"
+            "sdkVersion": "X-Fern-SDK-Version",
+            "userAgent": null
         }
     }
 }"
@@ -8827,6 +8975,7 @@ exports[`ir {"name":"navigation-points-to"} 1`] = `
 
 exports[`ir {"name":"nested-example-reference"} 1`] = `
 "{
+    "fdrApiDefinitionId": null,
     "apiVersion": null,
     "apiName": {
         "originalName": "api",
@@ -9090,11 +9239,17 @@ exports[`ir {"name":"nested-example-reference"} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": []
             },
             "referencedTypes": [
                 "type_nested:Product"
             ],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -9206,9 +9361,15 @@ exports[`ir {"name":"nested-example-reference"} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": []
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -9306,6 +9467,11 @@ exports[`ir {"name":"nested-example-reference"} 1`] = `
                 }
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [
                 {
                     "name": {
@@ -9407,6 +9573,13 @@ exports[`ir {"name":"nested-example-reference"} 1`] = `
             },
             "headers": [],
             "pathParameters": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "transport": {
+                "type": "http"
+            },
             "endpoints": [
                 {
                     "id": "endpoint_nested.calculate",
@@ -10152,7 +10325,7 @@ exports[`ir {"name":"nested-example-reference"} 1`] = `
                     "autogeneratedExamples": [
                         {
                             "example": {
-                                "url": "",
+                                "url": "/nested",
                                 "rootPathParameters": [],
                                 "servicePathParameters": [],
                                 "endpointPathParameters": [],
@@ -10765,7 +10938,7 @@ exports[`ir {"name":"nested-example-reference"} 1`] = `
                                         }
                                     }
                                 },
-                                "id": "502bf7755f833e48ae48531b542f1cd503a7b780",
+                                "id": "dbc628efc9741a6d3a6e5d0a140f62613e3acd6e",
                                 "docs": null
                             }
                         }
@@ -10822,6 +10995,7 @@ exports[`ir {"name":"nested-example-reference"} 1`] = `
     "webhookGroups": {},
     "websocketChannels": {},
     "readmeConfig": null,
+    "sourceConfig": null,
     "subpackages": {
         "subpackage_nested": {
             "name": {
@@ -10927,7 +11101,8 @@ exports[`ir {"name":"nested-example-reference"} 1`] = `
         "platformHeaders": {
             "language": "X-Fern-Language",
             "sdkName": "X-Fern-SDK-Name",
-            "sdkVersion": "X-Fern-SDK-Version"
+            "sdkVersion": "X-Fern-SDK-Version",
+            "userAgent": null
         }
     }
 }"
@@ -10935,6 +11110,7 @@ exports[`ir {"name":"nested-example-reference"} 1`] = `
 
 exports[`ir {"name":"packages"} 1`] = `
 "{
+    "fdrApiDefinitionId": null,
     "apiVersion": null,
     "apiName": {
         "originalName": "packages",
@@ -11019,6 +11195,11 @@ exports[`ir {"name":"packages"} 1`] = `
                 }
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -11118,6 +11299,11 @@ exports[`ir {"name":"packages"} 1`] = `
                 }
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -11346,12 +11532,18 @@ exports[`ir {"name":"packages"} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": []
             },
             "referencedTypes": [
                 "type_:RootString",
                 "type_package:PackageString"
             ],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -11488,6 +11680,11 @@ exports[`ir {"name":"packages"} 1`] = `
                 }
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -11512,6 +11709,13 @@ exports[`ir {"name":"packages"} 1`] = `
             },
             "headers": [],
             "pathParameters": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "transport": {
+                "type": "http"
+            },
             "endpoints": [
                 {
                     "id": "endpoint_.rootEndpoint",
@@ -11645,6 +11849,13 @@ exports[`ir {"name":"packages"} 1`] = `
             },
             "headers": [],
             "pathParameters": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "transport": {
+                "type": "http"
+            },
             "endpoints": []
         }
     },
@@ -11691,6 +11902,7 @@ exports[`ir {"name":"packages"} 1`] = `
     "webhookGroups": {},
     "websocketChannels": {},
     "readmeConfig": null,
+    "sourceConfig": null,
     "subpackages": {
         "subpackage_package": {
             "name": {
@@ -12103,7 +12315,8 @@ exports[`ir {"name":"packages"} 1`] = `
         "platformHeaders": {
             "language": "X-Fern-Language",
             "sdkName": "X-Fern-SDK-Name",
-            "sdkVersion": "X-Fern-SDK-Version"
+            "sdkVersion": "X-Fern-SDK-Version",
+            "userAgent": null
         }
     }
 }"
@@ -12111,6 +12324,7 @@ exports[`ir {"name":"packages"} 1`] = `
 
 exports[`ir {"name":"response-property"} 1`] = `
 "{
+    "fdrApiDefinitionId": null,
     "apiVersion": null,
     "apiName": {
         "originalName": "response-property",
@@ -12249,9 +12463,15 @@ exports[`ir {"name":"response-property"} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": []
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -12365,9 +12585,15 @@ exports[`ir {"name":"response-property"} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": []
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -12604,12 +12830,56 @@ exports[`ir {"name":"response-property"} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": [
+                    {
+                        "name": {
+                            "name": {
+                                "originalName": "docs",
+                                "camelCase": {
+                                    "unsafeName": "docs",
+                                    "safeName": "docs"
+                                },
+                                "snakeCase": {
+                                    "unsafeName": "docs",
+                                    "safeName": "docs"
+                                },
+                                "screamingSnakeCase": {
+                                    "unsafeName": "DOCS",
+                                    "safeName": "DOCS"
+                                },
+                                "pascalCase": {
+                                    "unsafeName": "Docs",
+                                    "safeName": "Docs"
+                                }
+                            },
+                            "wireValue": "docs"
+                        },
+                        "valueType": {
+                            "_type": "primitive",
+                            "primitive": {
+                                "v1": "STRING",
+                                "v2": {
+                                    "type": "string",
+                                    "default": null,
+                                    "validation": null
+                                }
+                            }
+                        },
+                        "availability": null,
+                        "docs": null
+                    }
+                ]
             },
             "referencedTypes": [
                 "type_service:WithDocs",
                 "type_service:Movie"
             ],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -12672,6 +12942,13 @@ exports[`ir {"name":"response-property"} 1`] = `
             },
             "headers": [],
             "pathParameters": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "transport": {
+                "type": "http"
+            },
             "endpoints": [
                 {
                     "id": "endpoint_service.getMovie",
@@ -13471,6 +13748,7 @@ exports[`ir {"name":"response-property"} 1`] = `
     "webhookGroups": {},
     "websocketChannels": {},
     "readmeConfig": null,
+    "sourceConfig": null,
     "subpackages": {
         "subpackage_service": {
             "name": {
@@ -13576,7 +13854,8 @@ exports[`ir {"name":"response-property"} 1`] = `
         "platformHeaders": {
             "language": "X-Fern-Language",
             "sdkName": "X-Fern-SDK-Name",
-            "sdkVersion": "X-Fern-SDK-Version"
+            "sdkVersion": "X-Fern-SDK-Version",
+            "userAgent": null
         }
     }
 }"
@@ -13584,6 +13863,7 @@ exports[`ir {"name":"response-property"} 1`] = `
 
 exports[`ir {"name":"simple","audiences":["internal"]} 1`] = `
 "{
+    "fdrApiDefinitionId": null,
     "apiVersion": null,
     "apiName": {
         "originalName": "my-api",
@@ -13767,9 +14047,15 @@ exports[`ir {"name":"simple","audiences":["internal"]} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": []
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -13875,9 +14161,15 @@ exports[`ir {"name":"simple","audiences":["internal"]} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": []
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -14034,6 +14326,13 @@ exports[`ir {"name":"simple","audiences":["internal"]} 1`] = `
             },
             "headers": [],
             "pathParameters": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "transport": {
+                "type": "http"
+            },
             "endpoints": [
                 {
                     "id": "endpoint_imdb.internalEndpoint",
@@ -14380,7 +14679,7 @@ exports[`ir {"name":"simple","audiences":["internal"]} 1`] = `
                     "autogeneratedExamples": [
                         {
                             "example": {
-                                "url": "",
+                                "url": "/test/string/movies",
                                 "rootPathParameters": [
                                     {
                                         "name": {
@@ -14621,13 +14920,13 @@ exports[`ir {"name":"simple","audiences":["internal"]} 1`] = `
                                         }
                                     }
                                 },
-                                "id": "ef55921c2173ec7f026ea0c5ed1e73ce4371c1fd",
+                                "id": "a16b5fde1f41adf2cb5c8aef09c71491b1782ac3",
                                 "docs": null
                             }
                         },
                         {
                             "example": {
-                                "url": "",
+                                "url": "/test/string/movies",
                                 "rootPathParameters": [
                                     {
                                         "name": {
@@ -14919,7 +15218,7 @@ exports[`ir {"name":"simple","audiences":["internal"]} 1`] = `
                                     },
                                     "body": null
                                 },
-                                "id": "f447124c971fe3cf94eb6c7da30cec9c75304b19",
+                                "id": "3e6163938ad55cceb9b6fb6b3d4457481e1194d9",
                                 "docs": null
                             }
                         }
@@ -15063,6 +15362,7 @@ exports[`ir {"name":"simple","audiences":["internal"]} 1`] = `
     "webhookGroups": {},
     "websocketChannels": {},
     "readmeConfig": null,
+    "sourceConfig": null,
     "subpackages": {
         "subpackage_commons": {
             "name": {
@@ -15244,7 +15544,8 @@ exports[`ir {"name":"simple","audiences":["internal"]} 1`] = `
         "platformHeaders": {
             "language": "X-Fern-Language",
             "sdkName": "X-Fern-SDK-Name",
-            "sdkVersion": "X-Fern-SDK-Version"
+            "sdkVersion": "X-Fern-SDK-Version",
+            "userAgent": null
         }
     }
 }"
@@ -15252,6 +15553,7 @@ exports[`ir {"name":"simple","audiences":["internal"]} 1`] = `
 
 exports[`ir {"name":"simple","audiences":["test"]} 1`] = `
 "{
+    "fdrApiDefinitionId": null,
     "apiVersion": null,
     "apiName": {
         "originalName": "my-api",
@@ -15435,9 +15737,15 @@ exports[`ir {"name":"simple","audiences":["test"]} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": []
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -15535,6 +15843,11 @@ exports[`ir {"name":"simple","audiences":["test"]} 1`] = `
                 }
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [
                 {
                     "name": null,
@@ -15732,9 +16045,15 @@ exports[`ir {"name":"simple","audiences":["test"]} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": []
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [
                 {
                     "name": {
@@ -16173,6 +16492,13 @@ exports[`ir {"name":"simple","audiences":["test"]} 1`] = `
             },
             "headers": [],
             "pathParameters": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "transport": {
+                "type": "http"
+            },
             "endpoints": [
                 {
                     "id": "endpoint_imdb.createMovie",
@@ -17531,7 +17857,7 @@ exports[`ir {"name":"simple","audiences":["test"]} 1`] = `
                     "autogeneratedExamples": [
                         {
                             "example": {
-                                "url": "",
+                                "url": "/test/string/movies",
                                 "rootPathParameters": [
                                     {
                                         "name": {
@@ -18007,13 +18333,13 @@ exports[`ir {"name":"simple","audiences":["test"]} 1`] = `
                                         }
                                     }
                                 },
-                                "id": "03395fba516497b49a949e2da9ac92ec2832c174",
+                                "id": "181d939e789eb0d29f2bb5cccfc5375ed039cd37",
                                 "docs": null
                             }
                         },
                         {
                             "example": {
-                                "url": "",
+                                "url": "/test/string/movies",
                                 "rootPathParameters": [
                                     {
                                         "name": {
@@ -18489,13 +18815,13 @@ exports[`ir {"name":"simple","audiences":["test"]} 1`] = `
                                         }
                                     }
                                 },
-                                "id": "03395fba516497b49a949e2da9ac92ec2832c174",
+                                "id": "181d939e789eb0d29f2bb5cccfc5375ed039cd37",
                                 "docs": null
                             }
                         },
                         {
                             "example": {
-                                "url": "",
+                                "url": "/test/string/movies",
                                 "rootPathParameters": [
                                     {
                                         "name": {
@@ -18948,7 +19274,7 @@ exports[`ir {"name":"simple","audiences":["test"]} 1`] = `
                                     },
                                     "body": null
                                 },
-                                "id": "c69afea5fa058c61232f777fae73d341324d87cc",
+                                "id": "7719d117aa55b7a0a06be30825cd95761e68b931",
                                 "docs": null
                             }
                         }
@@ -19093,6 +19419,7 @@ exports[`ir {"name":"simple","audiences":["test"]} 1`] = `
     "webhookGroups": {},
     "websocketChannels": {},
     "readmeConfig": null,
+    "sourceConfig": null,
     "subpackages": {
         "subpackage_commons": {
             "name": {
@@ -19275,7 +19602,8 @@ exports[`ir {"name":"simple","audiences":["test"]} 1`] = `
         "platformHeaders": {
             "language": "X-Fern-Language",
             "sdkName": "X-Fern-SDK-Name",
-            "sdkVersion": "X-Fern-SDK-Version"
+            "sdkVersion": "X-Fern-SDK-Version",
+            "userAgent": null
         }
     }
 }"
@@ -19283,6 +19611,7 @@ exports[`ir {"name":"simple","audiences":["test"]} 1`] = `
 
 exports[`ir {"name":"simple"} 1`] = `
 "{
+    "fdrApiDefinitionId": null,
     "apiVersion": null,
     "apiName": {
         "originalName": "my-api",
@@ -19466,9 +19795,15 @@ exports[`ir {"name":"simple"} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": []
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -19582,9 +19917,15 @@ exports[`ir {"name":"simple"} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": []
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -19736,6 +20077,11 @@ exports[`ir {"name":"simple"} 1`] = `
                 ]
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -19943,11 +20289,17 @@ exports[`ir {"name":"simple"} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": []
             },
             "referencedTypes": [
                 "type_director:Age"
             ],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [
                 {
                     "name": {
@@ -20351,6 +20703,11 @@ exports[`ir {"name":"simple"} 1`] = `
                 }
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [
                 {
                     "name": {
@@ -20483,6 +20840,11 @@ exports[`ir {"name":"simple"} 1`] = `
                 }
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -20578,6 +20940,11 @@ exports[`ir {"name":"simple"} 1`] = `
                 }
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -20675,6 +21042,11 @@ exports[`ir {"name":"simple"} 1`] = `
                 }
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [
                 {
                     "name": null,
@@ -20793,6 +21165,11 @@ exports[`ir {"name":"simple"} 1`] = `
                 }
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [
                 {
                     "name": null,
@@ -20931,6 +21308,11 @@ exports[`ir {"name":"simple"} 1`] = `
                 }
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -21175,11 +21557,17 @@ exports[`ir {"name":"simple"} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": []
             },
             "referencedTypes": [
                 "type_imdb:MovieId"
             ],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [
                 {
                     "name": null,
@@ -21726,9 +22114,15 @@ exports[`ir {"name":"simple"} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": []
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [
                 {
                     "name": {
@@ -22181,12 +22575,18 @@ exports[`ir {"name":"simple"} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": []
             },
             "referencedTypes": [
                 "type_director:Director",
                 "type_director:Age"
             ],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [
                 {
                     "name": null,
@@ -23015,6 +23415,11 @@ exports[`ir {"name":"simple"} 1`] = `
                 "type_director:Director",
                 "type_director:Age"
             ],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [
                 {
                     "name": {
@@ -23682,9 +24087,15 @@ exports[`ir {"name":"simple"} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": []
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -23927,12 +24338,99 @@ exports[`ir {"name":"simple"} 1`] = `
                         "docs": null
                     }
                 ],
-                "extra-properties": false
+                "extra-properties": false,
+                "extendedProperties": [
+                    {
+                        "name": {
+                            "name": {
+                                "originalName": "title",
+                                "camelCase": {
+                                    "unsafeName": "title",
+                                    "safeName": "title"
+                                },
+                                "snakeCase": {
+                                    "unsafeName": "title",
+                                    "safeName": "title"
+                                },
+                                "screamingSnakeCase": {
+                                    "unsafeName": "TITLE",
+                                    "safeName": "TITLE"
+                                },
+                                "pascalCase": {
+                                    "unsafeName": "Title",
+                                    "safeName": "Title"
+                                }
+                            },
+                            "wireValue": "title"
+                        },
+                        "valueType": {
+                            "_type": "primitive",
+                            "primitive": {
+                                "v1": "STRING",
+                                "v2": {
+                                    "type": "string",
+                                    "default": null,
+                                    "validation": null
+                                }
+                            }
+                        },
+                        "availability": null,
+                        "docs": null
+                    },
+                    {
+                        "name": {
+                            "name": {
+                                "originalName": "ratings",
+                                "camelCase": {
+                                    "unsafeName": "ratings",
+                                    "safeName": "ratings"
+                                },
+                                "snakeCase": {
+                                    "unsafeName": "ratings",
+                                    "safeName": "ratings"
+                                },
+                                "screamingSnakeCase": {
+                                    "unsafeName": "RATINGS",
+                                    "safeName": "RATINGS"
+                                },
+                                "pascalCase": {
+                                    "unsafeName": "Ratings",
+                                    "safeName": "Ratings"
+                                }
+                            },
+                            "wireValue": "ratings"
+                        },
+                        "valueType": {
+                            "_type": "container",
+                            "container": {
+                                "_type": "list",
+                                "list": {
+                                    "_type": "primitive",
+                                    "primitive": {
+                                        "v1": "DOUBLE",
+                                        "v2": {
+                                            "type": "double",
+                                            "default": null,
+                                            "validation": null
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "availability": null,
+                        "docs": null
+                    }
+                ]
             },
             "referencedTypes": [
                 "type_imdb:CreateMovieRequest",
                 "type_imdb:RecursiveType"
             ],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [
                 {
                     "name": null,
@@ -26027,6 +26525,13 @@ exports[`ir {"name":"simple"} 1`] = `
             },
             "headers": [],
             "pathParameters": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "transport": {
+                "type": "http"
+            },
             "endpoints": [
                 {
                     "id": "endpoint_imdb.internalEndpoint",
@@ -26373,7 +26878,7 @@ exports[`ir {"name":"simple"} 1`] = `
                     "autogeneratedExamples": [
                         {
                             "example": {
-                                "url": "",
+                                "url": "/test/string/movies",
                                 "rootPathParameters": [
                                     {
                                         "name": {
@@ -26614,13 +27119,13 @@ exports[`ir {"name":"simple"} 1`] = `
                                         }
                                     }
                                 },
-                                "id": "ef55921c2173ec7f026ea0c5ed1e73ce4371c1fd",
+                                "id": "a16b5fde1f41adf2cb5c8aef09c71491b1782ac3",
                                 "docs": null
                             }
                         },
                         {
                             "example": {
-                                "url": "",
+                                "url": "/test/string/movies",
                                 "rootPathParameters": [
                                     {
                                         "name": {
@@ -26912,7 +27417,7 @@ exports[`ir {"name":"simple"} 1`] = `
                                     },
                                     "body": null
                                 },
-                                "id": "f447124c971fe3cf94eb6c7da30cec9c75304b19",
+                                "id": "3e6163938ad55cceb9b6fb6b3d4457481e1194d9",
                                 "docs": null
                             }
                         }
@@ -28278,7 +28783,7 @@ exports[`ir {"name":"simple"} 1`] = `
                     "autogeneratedExamples": [
                         {
                             "example": {
-                                "url": "",
+                                "url": "/test/string/movies",
                                 "rootPathParameters": [
                                     {
                                         "name": {
@@ -28754,13 +29259,13 @@ exports[`ir {"name":"simple"} 1`] = `
                                         }
                                     }
                                 },
-                                "id": "03395fba516497b49a949e2da9ac92ec2832c174",
+                                "id": "181d939e789eb0d29f2bb5cccfc5375ed039cd37",
                                 "docs": null
                             }
                         },
                         {
                             "example": {
-                                "url": "",
+                                "url": "/test/string/movies",
                                 "rootPathParameters": [
                                     {
                                         "name": {
@@ -29236,13 +29741,13 @@ exports[`ir {"name":"simple"} 1`] = `
                                         }
                                     }
                                 },
-                                "id": "03395fba516497b49a949e2da9ac92ec2832c174",
+                                "id": "181d939e789eb0d29f2bb5cccfc5375ed039cd37",
                                 "docs": null
                             }
                         },
                         {
                             "example": {
-                                "url": "",
+                                "url": "/test/string/movies",
                                 "rootPathParameters": [
                                     {
                                         "name": {
@@ -29695,7 +30200,7 @@ exports[`ir {"name":"simple"} 1`] = `
                                     },
                                     "body": null
                                 },
-                                "id": "c69afea5fa058c61232f777fae73d341324d87cc",
+                                "id": "7719d117aa55b7a0a06be30825cd95761e68b931",
                                 "docs": null
                             }
                         }
@@ -31232,7 +31737,7 @@ exports[`ir {"name":"simple"} 1`] = `
                     "autogeneratedExamples": [
                         {
                             "example": {
-                                "url": "/",
+                                "url": "/test/string/movies/id1",
                                 "rootPathParameters": [
                                     {
                                         "name": {
@@ -31881,13 +32386,13 @@ exports[`ir {"name":"simple"} 1`] = `
                                         }
                                     }
                                 },
-                                "id": "a7b26d6f275b3036c567bd7b673bcb03f8e418de",
+                                "id": "c31d0a00f664df9938064fde5ab39352e548bd05",
                                 "docs": null
                             }
                         },
                         {
                             "example": {
-                                "url": "/",
+                                "url": "/test/string/movies/id1",
                                 "rootPathParameters": [
                                     {
                                         "name": {
@@ -32536,13 +33041,13 @@ exports[`ir {"name":"simple"} 1`] = `
                                         }
                                     }
                                 },
-                                "id": "4f346c67d013ddf25fb1055e2af93e019a886aa1",
+                                "id": "1be4f34f8b77401ebd38f067fb5e87c0c4053a6e",
                                 "docs": null
                             }
                         },
                         {
                             "example": {
-                                "url": "/",
+                                "url": "/test/string/movies/id1",
                                 "rootPathParameters": [
                                     {
                                         "name": {
@@ -32799,13 +33304,13 @@ exports[`ir {"name":"simple"} 1`] = `
                                     },
                                     "body": null
                                 },
-                                "id": "3a5ac4231657544a7965588cbd8e99932e082700",
+                                "id": "b1abc4b36c6b66836558d64000446b6bb9f3a8bd",
                                 "docs": null
                             }
                         },
                         {
                             "example": {
-                                "url": "/",
+                                "url": "/test/string/movies/id1",
                                 "rootPathParameters": [
                                     {
                                         "name": {
@@ -33062,7 +33567,7 @@ exports[`ir {"name":"simple"} 1`] = `
                                     },
                                     "body": null
                                 },
-                                "id": "fc1b69bd3ef039c3daf8119cfcce2c56182df287",
+                                "id": "0a1b7d4c2ef7232675d53dd288caf70cdd8fbb23",
                                 "docs": null
                             }
                         }
@@ -33424,7 +33929,7 @@ exports[`ir {"name":"simple"} 1`] = `
                     "autogeneratedExamples": [
                         {
                             "example": {
-                                "url": "/",
+                                "url": "/test/string/movies/id1",
                                 "rootPathParameters": [
                                     {
                                         "name": {
@@ -33582,13 +34087,13 @@ exports[`ir {"name":"simple"} 1`] = `
                                         "value": null
                                     }
                                 },
-                                "id": "08c111f715f4618742ddeed3525866980c367442",
+                                "id": "bce9a848a5f585213943006d1ff84e3ee794eb7b",
                                 "docs": null
                             }
                         },
                         {
                             "example": {
-                                "url": "/",
+                                "url": "/test/string/movies/id1",
                                 "rootPathParameters": [
                                     {
                                         "name": {
@@ -33808,7 +34313,7 @@ exports[`ir {"name":"simple"} 1`] = `
                                     },
                                     "body": null
                                 },
-                                "id": "0aab585c6e8f4d09be98fd53cbd0045e27e08170",
+                                "id": "d3b0bcb695d15a97459cd0cbff875b2c73a87657",
                                 "docs": null
                             }
                         }
@@ -33966,6 +34471,7 @@ exports[`ir {"name":"simple"} 1`] = `
     "webhookGroups": {},
     "websocketChannels": {},
     "readmeConfig": null,
+    "sourceConfig": null,
     "subpackages": {
         "subpackage_commons": {
             "name": {
@@ -34238,7 +34744,8 @@ exports[`ir {"name":"simple"} 1`] = `
         "platformHeaders": {
             "language": "X-Fern-Language",
             "sdkName": "X-Fern-SDK-Name",
-            "sdkVersion": "X-Fern-SDK-Version"
+            "sdkVersion": "X-Fern-SDK-Version",
+            "userAgent": null
         }
     }
 }"
@@ -34246,6 +34753,7 @@ exports[`ir {"name":"simple"} 1`] = `
 
 exports[`ir {"name":"streaming"} 1`] = `
 "{
+    "fdrApiDefinitionId": null,
     "apiVersion": null,
     "apiName": {
         "originalName": "my-api",
@@ -34332,6 +34840,13 @@ exports[`ir {"name":"streaming"} 1`] = `
             },
             "headers": [],
             "pathParameters": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "transport": {
+                "type": "http"
+            },
             "endpoints": [
                 {
                     "id": "endpoint_streaming.streaming",
@@ -34400,7 +34915,7 @@ exports[`ir {"name":"streaming"} 1`] = `
                     "autogeneratedExamples": [
                         {
                             "example": {
-                                "url": "/streaming",
+                                "url": "/movies/streaming",
                                 "rootPathParameters": [],
                                 "servicePathParameters": [],
                                 "endpointPathParameters": [],
@@ -34441,7 +34956,7 @@ exports[`ir {"name":"streaming"} 1`] = `
                                         ]
                                     }
                                 },
-                                "id": "e6e92437e479e10ebdaa379af7af4fe706540e28",
+                                "id": "28aec953dfec1f2528cfffd051a0dd52a94babf7",
                                 "docs": null
                             }
                         }
@@ -34545,7 +35060,8 @@ exports[`ir {"name":"streaming"} 1`] = `
                                 "docs": null
                             }
                         ],
-                        "extra-properties": false
+                        "extra-properties": false,
+                        "extendedProperties": []
                     },
                     "sdkRequest": {
                         "shape": {
@@ -34637,7 +35153,7 @@ exports[`ir {"name":"streaming"} 1`] = `
                     "autogeneratedExamples": [
                         {
                             "example": {
-                                "url": "/maybe-streaming",
+                                "url": "/movies/maybe-streaming",
                                 "rootPathParameters": [],
                                 "servicePathParameters": [],
                                 "endpointPathParameters": [],
@@ -34720,7 +35236,7 @@ exports[`ir {"name":"streaming"} 1`] = `
                                         ]
                                     }
                                 },
-                                "id": "498c93cea5dbe8c50c1c68bce17925f86ed929fb",
+                                "id": "971e543e8647d0710fbcc981703bc932529d4af9",
                                 "docs": null
                             }
                         }
@@ -34770,6 +35286,7 @@ exports[`ir {"name":"streaming"} 1`] = `
     "webhookGroups": {},
     "websocketChannels": {},
     "readmeConfig": null,
+    "sourceConfig": null,
     "subpackages": {
         "subpackage_streaming": {
             "name": {
@@ -34871,7 +35388,8 @@ exports[`ir {"name":"streaming"} 1`] = `
         "platformHeaders": {
             "language": "X-Fern-Language",
             "sdkName": "X-Fern-SDK-Name",
-            "sdkVersion": "X-Fern-SDK-Version"
+            "sdkVersion": "X-Fern-SDK-Version",
+            "userAgent": null
         }
     }
 }"
@@ -34879,6 +35397,7 @@ exports[`ir {"name":"streaming"} 1`] = `
 
 exports[`ir {"name":"variables"} 1`] = `
 "{
+    "fdrApiDefinitionId": null,
     "apiVersion": null,
     "apiName": {
         "originalName": "my-api",
@@ -35001,6 +35520,11 @@ exports[`ir {"name":"variables"} 1`] = `
                 }
             },
             "referencedTypes": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "source": null,
             "userProvidedExamples": [],
             "autogeneratedExamples": [],
             "availability": null,
@@ -35063,6 +35587,13 @@ exports[`ir {"name":"variables"} 1`] = `
             },
             "headers": [],
             "pathParameters": [],
+            "encoding": {
+                "json": {},
+                "proto": null
+            },
+            "transport": {
+                "type": "http"
+            },
             "endpoints": [
                 {
                     "id": "endpoint_service.test",
@@ -35405,7 +35936,7 @@ exports[`ir {"name":"variables"} 1`] = `
                     "autogeneratedExamples": [
                         {
                             "example": {
-                                "url": "/",
+                                "url": "/string/movies/string",
                                 "rootPathParameters": [
                                     {
                                         "name": {
@@ -35637,7 +36168,7 @@ exports[`ir {"name":"variables"} 1`] = `
                                         "value": null
                                     }
                                 },
-                                "id": "f79b999f1a5dee31622bbf3e6f0d65c7a8703a7e",
+                                "id": "382cb8d2bcec5a9757159c7febf6c28785994c8d",
                                 "docs": null
                             }
                         }
@@ -35884,6 +36415,7 @@ exports[`ir {"name":"variables"} 1`] = `
     "webhookGroups": {},
     "websocketChannels": {},
     "readmeConfig": null,
+    "sourceConfig": null,
     "subpackages": {
         "subpackage_commons": {
             "name": {
@@ -36061,7 +36593,8 @@ exports[`ir {"name":"variables"} 1`] = `
         "platformHeaders": {
             "language": "X-Fern-Language",
             "sdkName": "X-Fern-SDK-Name",
-            "sdkVersion": "X-Fern-SDK-Version"
+            "sdkVersion": "X-Fern-SDK-Version",
+            "userAgent": null
         }
     }
 }"
@@ -36069,6 +36602,7 @@ exports[`ir {"name":"variables"} 1`] = `
 
 exports[`ir {"name":"webhooks"} 1`] = `
 "{
+    "fdrApiDefinitionId": null,
     "apiVersion": null,
     "apiName": {
         "originalName": "my-api",
@@ -36263,6 +36797,7 @@ exports[`ir {"name":"webhooks"} 1`] = `
     },
     "websocketChannels": {},
     "readmeConfig": null,
+    "sourceConfig": null,
     "subpackages": {
         "subpackage_webhooks": {
             "name": {
@@ -36364,7 +36899,8 @@ exports[`ir {"name":"webhooks"} 1`] = `
         "platformHeaders": {
             "language": "X-Fern-Language",
             "sdkName": "X-Fern-SDK-Name",
-            "sdkVersion": "X-Fern-SDK-Version"
+            "sdkVersion": "X-Fern-SDK-Version",
+            "userAgent": null
         }
     }
 }"

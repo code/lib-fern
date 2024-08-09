@@ -7,7 +7,7 @@ from pathlib import Path
 from types import TracebackType
 from typing import List, Optional, Sequence, Set, Type
 
-from fern.generator_exec.resources import GithubOutputMode, LicenseConfig, PypiMetadata
+from fern.generator_exec import GithubOutputMode, LicenseConfig, PypiMetadata
 from isort import file
 
 from fern_python.codegen import AST
@@ -39,8 +39,7 @@ class Project:
         filepath: str,
         relative_path_to_project: str,
         python_version: str = "^3.8",
-        project_config: ProjectConfig = None,
-        should_format_files: bool,
+        project_config: Optional[ProjectConfig] = None,
         sorted_modules: Optional[Sequence[str]] = None,
         flat_layout: bool = False,
         whitelabel: bool = False,
@@ -60,10 +59,9 @@ class Project:
         self._root_filepath = filepath
         self._relative_path_to_project = relative_path_to_project
         self._project_config = project_config
-        self._module_manager = ModuleManager(should_format=should_format_files, sorted_modules=sorted_modules)
+        self._module_manager = ModuleManager(sorted_modules=sorted_modules)
         self._python_version = python_version
         self._dependency_manager = DependencyManager()
-        self._should_format_files = should_format_files
         self._whitelabel = whitelabel
         self._github_output_mode = github_output_mode
         self._pypi_metadata = pypi_metadata
@@ -104,7 +102,7 @@ class Project:
                 module_path_of_source_file=module.path,
             ),
             dependency_manager=self._dependency_manager,
-            should_format=self._should_format_files,
+            should_format=False,
             whitelabel=self._whitelabel,
         )
         return source_file
@@ -144,7 +142,7 @@ class Project:
         string_replacements: Optional[dict[str, str]] = None,
     ) -> None:
         with open(path_on_disk, "r") as existing_file:
-            writer = WriterImpl(should_format=self._should_format_files)
+            writer = WriterImpl(should_format=False)
             read_file = existing_file.read()
             if string_replacements is not None:
                 for k, v in string_replacements.items():

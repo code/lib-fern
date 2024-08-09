@@ -2,11 +2,11 @@ import { docsYml, generatorsYml } from "@fern-api/configuration";
 import { AbsoluteFilePath, RelativeFilePath } from "@fern-api/fs-utils";
 import { DefinitionFileSchema, PackageMarkerFileSchema, RootApiFileSchema } from "@fern-api/yaml-schema";
 import { processPackageMarkers } from "../processPackageMarkers";
-import { FernWorkspace } from "../workspaces/FernWorkspace";
+import { FernWorkspace, LazyFernWorkspace } from "../workspaces/FernWorkspace";
 import { OSSWorkspace } from "../workspaces/OSSWorkspace";
 import { ParsedFernFile } from "./FernFile";
 
-export type Workspace = DocsWorkspace | FernWorkspace | OSSWorkspace;
+export type Workspace = DocsWorkspace | LazyFernWorkspace | OSSWorkspace;
 
 export interface DocsWorkspace {
     type: "docs";
@@ -16,17 +16,49 @@ export interface DocsWorkspace {
     config: docsYml.RawSchemas.DocsConfiguration;
 }
 
-export interface Spec {
+export type Spec = OpenAPISpec | ProtobufSpec;
+
+export interface OpenAPISpec {
+    type: "openapi";
     absoluteFilepath: AbsoluteFilePath;
     absoluteFilepathToOverrides: AbsoluteFilePath | undefined;
+    source: Source;
     settings?: SpecImportSettings;
+}
+
+export interface ProtobufSpec {
+    type: "protobuf";
+    absoluteFilepathToProtobufRoot: AbsoluteFilePath;
+    absoluteFilepathToProtobufTarget: AbsoluteFilePath;
+    absoluteFilepathToOverrides: AbsoluteFilePath | undefined;
+    generateLocally: boolean;
+    settings?: SpecImportSettings;
+}
+
+export type Source = AsyncAPISource | OpenAPISource | ProtobufSource;
+
+export interface AsyncAPISource {
+    type: "asyncapi";
+    file: AbsoluteFilePath;
+}
+
+export interface OpenAPISource {
+    type: "openapi";
+    file: AbsoluteFilePath;
+}
+
+export interface ProtobufSource {
+    type: "protobuf";
+    file: AbsoluteFilePath;
 }
 
 export interface SpecImportSettings {
     audiences: string[];
     shouldUseTitleAsName: boolean;
     shouldUseUndiscriminatedUnionsWithLiterals: boolean;
+    asyncApiNaming?: "v1" | "v2";
 }
+
 export interface APIChangelog {
     files: ChangelogFile[];
 }

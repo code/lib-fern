@@ -16,7 +16,7 @@
                     "from seed import SeedFileUpload"
                 ],
                 "isOptional": true,
-                "templateString": "client = SeedFileUpload(\n    base_url=\"https://yourhost.com/path/to/api\",\n)",
+                "templateString": "client = SeedFileUpload(base_url=\"https://yourhost.com/path/to/api\", )",
                 "templateInputs": [],
                 "inputDelimiter": ",",
                 "type": "generic"
@@ -196,7 +196,7 @@
                             "delimiter": ",\n\t\t",
                             "innerTemplate": {
                                 "imports": [
-                                    "from seed import MyObject"
+                                    "from seed.service import MyObject"
                                 ],
                                 "isOptional": true,
                                 "templateString": "MyObject(\n\t\t\t$FERN_INPUT\n\t\t)",
@@ -241,7 +241,7 @@
                         "from seed import AsyncSeedFileUpload"
                     ],
                     "isOptional": true,
-                    "templateString": "client = AsyncSeedFileUpload(\n    base_url=\"https://yourhost.com/path/to/api\",\n)",
+                    "templateString": "client = AsyncSeedFileUpload(base_url=\"https://yourhost.com/path/to/api\", )",
                     "templateInputs": [],
                     "inputDelimiter": ",",
                     "type": "generic"
@@ -421,7 +421,7 @@
                                 "delimiter": ",\n\t\t",
                                 "innerTemplate": {
                                     "imports": [
-                                        "from seed import MyObject"
+                                        "from seed.service import MyObject"
                                     ],
                                     "isOptional": true,
                                     "templateString": "MyObject(\n\t\t\t$FERN_INPUT\n\t\t)",
@@ -478,7 +478,7 @@
                     "from seed import SeedFileUpload"
                 ],
                 "isOptional": true,
-                "templateString": "client = SeedFileUpload(\n    base_url=\"https://yourhost.com/path/to/api\",\n)",
+                "templateString": "client = SeedFileUpload(base_url=\"https://yourhost.com/path/to/api\", )",
                 "templateInputs": [],
                 "inputDelimiter": ",",
                 "type": "generic"
@@ -517,7 +517,7 @@
                         "from seed import AsyncSeedFileUpload"
                     ],
                     "isOptional": true,
-                    "templateString": "client = AsyncSeedFileUpload(\n    base_url=\"https://yourhost.com/path/to/api\",\n)",
+                    "templateString": "client = AsyncSeedFileUpload(base_url=\"https://yourhost.com/path/to/api\", )",
                     "templateInputs": [],
                     "inputDelimiter": ",",
                     "type": "generic"
@@ -568,7 +568,7 @@
                     "from seed import SeedFileUpload"
                 ],
                 "isOptional": true,
-                "templateString": "client = SeedFileUpload(\n    base_url=\"https://yourhost.com/path/to/api\",\n)",
+                "templateString": "client = SeedFileUpload(base_url=\"https://yourhost.com/path/to/api\", )",
                 "templateInputs": [],
                 "inputDelimiter": ",",
                 "type": "generic"
@@ -687,7 +687,7 @@
                         "from seed import AsyncSeedFileUpload"
                     ],
                     "isOptional": true,
-                    "templateString": "client = AsyncSeedFileUpload(\n    base_url=\"https://yourhost.com/path/to/api\",\n)",
+                    "templateString": "client = AsyncSeedFileUpload(base_url=\"https://yourhost.com/path/to/api\", )",
                     "templateInputs": [],
                     "inputDelimiter": ",",
                     "type": "generic"

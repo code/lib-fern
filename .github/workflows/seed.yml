@@ -38,6 +38,7 @@ jobs:
               - 'packages/seed/**'
               - 'test-definitions/**'
               - 'packages/ir-sdk/fern/apis/**'
+              - 'packages/cli/generation/ir-generator/**'
             ruby: 
               - 'generators/ruby/**'
               - seed/ruby-sdk/seed.yml
@@ -88,6 +89,17 @@ jobs:
       - name: Yarn Install
         run: yarn install
 
+      - uses: bufbuild/buf-setup-action@v1.34.0
+        with:
+          github_token: ${{ github.token }}
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install protoc-gen-openapi
+        run: go install github.com/google/gnostic/cmd/protoc-gen-openapi@v0.7.0
+
       - name: Seed Test
         env:
           FORCE_COLOR: "2"
@@ -113,6 +125,17 @@ jobs:
       - name: Yarn Install
         run: yarn install
 
+      - uses: bufbuild/buf-setup-action@v1.34.0
+        with:
+          github_token: ${{ github.token }}
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install protoc-gen-openapi
+        run: go install github.com/google/gnostic/cmd/protoc-gen-openapi@v0.7.0
+
       - name: Seed Test
         env:
           FORCE_COLOR: "2"
@@ -137,6 +160,17 @@ jobs:
 
       - name: Yarn Install
         run: yarn install
+
+      - uses: bufbuild/buf-setup-action@v1.34.0
+        with:
+          github_token: ${{ github.token }}
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install protoc-gen-openapi
+        run: go install github.com/google/gnostic/cmd/protoc-gen-openapi@v0.7.0
 
       - name: Install Poetry
         uses: snok/install-poetry@v1
@@ -170,6 +204,17 @@ jobs:
       - name: Yarn Install
         run: yarn install
 
+      - uses: bufbuild/buf-setup-action@v1.34.0
+        with:
+          github_token: ${{ github.token }}
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install protoc-gen-openapi
+        run: go install github.com/google/gnostic/cmd/protoc-gen-openapi@v0.7.0
+
       - name: Install Poetry
         uses: snok/install-poetry@v1
 
@@ -201,6 +246,17 @@ jobs:
 
       - name: Yarn Install
         run: yarn install
+
+      - uses: bufbuild/buf-setup-action@v1.34.0
+        with:
+          github_token: ${{ github.token }}
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install protoc-gen-openapi
+        run: go install github.com/google/gnostic/cmd/protoc-gen-openapi@v0.7.0
 
       - name: Install Poetry
         uses: snok/install-poetry@v1
@@ -234,6 +290,17 @@ jobs:
       - name: Yarn Install
         run: yarn install
 
+      - uses: bufbuild/buf-setup-action@v1.34.0
+        with:
+          github_token: ${{ github.token }}
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install protoc-gen-openapi
+        run: go install github.com/google/gnostic/cmd/protoc-gen-openapi@v0.7.0
+
       - name: Seed Test
         env:
           FORCE_COLOR: "2"
@@ -258,6 +325,17 @@ jobs:
 
       - name: Yarn Install
         run: yarn install
+
+      - uses: bufbuild/buf-setup-action@v1.34.0
+        with:
+          github_token: ${{ github.token }}
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install protoc-gen-openapi
+        run: go install github.com/google/gnostic/cmd/protoc-gen-openapi@v0.7.0
 
       - name: Seed Test
         env:
@@ -284,6 +362,17 @@ jobs:
       - name: Yarn Install
         run: yarn install
 
+      - uses: bufbuild/buf-setup-action@v1.34.0
+        with:
+          github_token: ${{ github.token }}
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install protoc-gen-openapi
+        run: go install github.com/google/gnostic/cmd/protoc-gen-openapi@v0.7.0
+
       - name: Seed Test
         env:
           FORCE_COLOR: "2"
@@ -308,6 +397,17 @@ jobs:
 
       - name: Yarn Install
         run: yarn install
+
+      - uses: bufbuild/buf-setup-action@v1.34.0
+        with:
+          github_token: ${{ github.token }}
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install protoc-gen-openapi
+        run: go install github.com/google/gnostic/cmd/protoc-gen-openapi@v0.7.0
 
       - name: Seed Test
         env:
@@ -334,6 +434,17 @@ jobs:
       - name: Yarn Install
         run: yarn install
 
+      - uses: bufbuild/buf-setup-action@v1.34.0
+        with:
+          github_token: ${{ github.token }}
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install protoc-gen-openapi
+        run: go install github.com/google/gnostic/cmd/protoc-gen-openapi@v0.7.0
+
       - name: Seed Test
         env:
           FORCE_COLOR: "2"
@@ -358,6 +469,17 @@ jobs:
 
       - name: Yarn Install
         run: yarn install
+
+      - uses: bufbuild/buf-setup-action@v1.34.0
+        with:
+          github_token: ${{ github.token }}
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install protoc-gen-openapi
+        run: go install github.com/google/gnostic/cmd/protoc-gen-openapi@v0.7.0
 
       - name: Seed Test
         env:
@@ -384,6 +506,17 @@ jobs:
       - name: Yarn Install
         run: yarn install
 
+      - uses: bufbuild/buf-setup-action@v1.34.0
+        with:
+          github_token: ${{ github.token }}
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install protoc-gen-openapi
+        run: go install github.com/google/gnostic/cmd/protoc-gen-openapi@v0.7.0
+
       - name: Seed Test
         env:
           FORCE_COLOR: "2"
@@ -408,6 +541,17 @@ jobs:
 
       - name: Yarn Install
         run: yarn install
+
+      - uses: bufbuild/buf-setup-action@v1.34.0
+        with:
+          github_token: ${{ github.token }}
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install protoc-gen-openapi
+        run: go install github.com/google/gnostic/cmd/protoc-gen-openapi@v0.7.0
 
       - name: Seed Test
         env:
@@ -434,6 +578,17 @@ jobs:
       - name: Yarn Install
         run: yarn install
 
+      - uses: bufbuild/buf-setup-action@v1.34.0
+        with:
+          github_token: ${{ github.token }}
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install protoc-gen-openapi
+        run: go install github.com/google/gnostic/cmd/protoc-gen-openapi@v0.7.0
+
       - name: Seed Test
         env:
           FORCE_COLOR: "2"
@@ -458,6 +613,17 @@ jobs:
 
       - name: Yarn Install
         run: yarn install
+
+      - uses: bufbuild/buf-setup-action@v1.34.0
+        with:
+          github_token: ${{ github.token }}
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install protoc-gen-openapi
+        run: go install github.com/google/gnostic/cmd/protoc-gen-openapi@v0.7.0
 
       - name: Seed Test
         env:
@@ -484,6 +650,17 @@ jobs:
       - name: Yarn Install
         run: yarn install
 
+      - uses: bufbuild/buf-setup-action@v1.34.0
+        with:
+          github_token: ${{ github.token }}
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install protoc-gen-openapi
+        run: go install github.com/google/gnostic/cmd/protoc-gen-openapi@v0.7.0
+
       - name: Seed Test
         env:
           FORCE_COLOR: "2"
@@ -508,6 +685,17 @@ jobs:
 
       - name: Yarn Install
         run: yarn install
+
+      - uses: bufbuild/buf-setup-action@v1.34.0
+        with:
+          github_token: ${{ github.token }}
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install protoc-gen-openapi
+        run: go install github.com/google/gnostic/cmd/protoc-gen-openapi@v0.7.0
 
       - name: Seed Test
         env:

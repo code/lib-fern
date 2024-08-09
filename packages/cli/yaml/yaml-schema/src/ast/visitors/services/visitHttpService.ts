@@ -50,7 +50,9 @@ export async function visitHttpService({
                 await visitEndpoint({ endpointId, endpoint, service, visitor, nodePathForEndpoint });
             }
         },
-        idempotent: noop
+        idempotent: noop,
+        transport: noop,
+        source: noop
     });
 }
 

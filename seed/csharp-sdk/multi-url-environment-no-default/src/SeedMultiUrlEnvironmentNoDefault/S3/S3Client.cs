@@ -1,5 +1,5 @@
 using System.Net.Http;
-using SeedMultiUrlEnvironmentNoDefault;
+using System.Text.Json;
 using SeedMultiUrlEnvironmentNoDefault.Core;
 
 #nullable enable
@@ -15,7 +15,10 @@ public class S3Client
         _client = client;
     }
 
-    public async Task<string> GetPresignedUrlAsync(GetPresignedUrlRequest request)
+    public async Task<string> GetPresignedUrlAsync(
+        GetPresignedUrlRequest request,
+        RequestOptions? options = null
+    )
     {
         var response = await _client.MakeRequestAsync(
             new RawClient.JsonApiRequest
@@ -23,14 +26,30 @@ public class S3Client
                 BaseUrl = _client.Options.Environment.S3,
                 Method = HttpMethod.Post,
                 Path = "/s3/presigned-url",
-                Body = request
+                Body = request,
+                Options = options
             }
         );
         var responseBody = await response.Raw.Content.ReadAsStringAsync();
         if (response.StatusCode is >= 200 and < 400)
         {
-            return JsonUtils.Deserialize<string>(responseBody)!;
+            try
+            {
+                return JsonUtils.Deserialize<string>(responseBody)!;
+            }
+            catch (JsonException e)
+            {
+                throw new SeedMultiUrlEnvironmentNoDefaultException(
+                    "Failed to deserialize response",
+                    e
+                );
+            }
         }
-        throw new Exception(responseBody);
+
+        throw new SeedMultiUrlEnvironmentNoDefaultApiException(
+            $"Error with status code {response.StatusCode}",
+            response.StatusCode,
+            JsonUtils.Deserialize<object>(responseBody)
+        );
     }
 }

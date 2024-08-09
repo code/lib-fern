@@ -1,11 +1,14 @@
 import { FERN_PACKAGE_MARKER_FILENAME, generatorsYml } from "@fern-api/configuration";
+import { isNonNullish } from "@fern-api/core-utils";
 import { AbsoluteFilePath, RelativeFilePath } from "@fern-api/fs-utils";
-import { convert } from "@fern-api/openapi-ir-to-fern";
+import { convert, OpenApiConvertedFernDefinition } from "@fern-api/openapi-ir-to-fern";
 import { parse, ParseOpenAPIOptions } from "@fern-api/openapi-parser";
 import { TaskContext } from "@fern-api/task-context";
+import { isRawProtobufSourceSchema, visitDefinitionFileYamlAst } from "@fern-api/yaml-schema";
 import yaml from "js-yaml";
 import { mapValues as mapValuesLodash } from "lodash-es";
 import { APIChangelog, FernDefinition, Spec } from "../types/Workspace";
+import { getAllOpenAPISpecs } from "../utils/getAllOpenAPISpecs";
 import { AbstractAPIWorkspace } from "./AbstractAPIWorkspace";
 import { FernWorkspace } from "./FernWorkspace";
 
@@ -57,14 +60,18 @@ export class OSSWorkspace extends AbstractAPIWorkspace<OSSWorkspace.Settings> {
 
     public async getDefinition(
         {
-            context
+            context,
+            modifySourceFilepath
         }: {
             context: TaskContext;
+            modifySourceFilepath?: (original: string) => string;
         },
         settings?: OSSWorkspace.Settings
     ): Promise<FernDefinition> {
+        const openApiSpecs = await getAllOpenAPISpecs({ context, specs: this.specs });
         const openApiIr = await parse({
-            specs: this.specs,
+            absoluteFilePathToWorkspace: this.absoluteFilepath,
+            specs: openApiSpecs,
             taskContext: context,
             optionOverrides: getOptionsOverridesFromSettings(settings)
         });
@@ -75,6 +82,10 @@ export class OSSWorkspace extends AbstractAPIWorkspace<OSSWorkspace.Settings> {
             enableUniqueErrorsPerEndpoint: settings?.enableUniqueErrorsPerEndpoint ?? false,
             detectGlobalHeaders: settings?.detectGlobalHeaders ?? true
         });
+
+        if (modifySourceFilepath != null) {
+            doModifySourceFilepaths({ definition, modifySourceFilepath });
+        }
 
         return {
             // these files doesn't live on disk, so there's no absolute filepath
@@ -119,6 +130,18 @@ export class OSSWorkspace extends AbstractAPIWorkspace<OSSWorkspace.Settings> {
             changelog: this.changelog
         });
     }
+
+    public getAbsoluteFilepaths(): AbsoluteFilePath[] {
+        return [
+            this.absoluteFilepath,
+            ...this.specs
+                .flatMap((spec) => [
+                    spec.type === "protobuf" ? spec.absoluteFilepathToProtobufTarget : spec.absoluteFilepath,
+                    spec.absoluteFilepathToOverrides
+                ])
+                .filter(isNonNullish)
+        ];
+    }
 }
 
 export function getOSSWorkspaceSettingsFromGeneratorInvocation(
@@ -135,6 +158,42 @@ export function getOSSWorkspaceSettingsFromGeneratorInvocation(
     }
 
     return result;
+}
+
+function doModifySourceFilepaths({
+    definition,
+    modifySourceFilepath
+}: {
+    definition: OpenApiConvertedFernDefinition;
+    modifySourceFilepath: (original: string) => string;
+}) {
+    const definitionFiles = Object.values(definition.definitionFiles);
+    definitionFiles.push(definition.packageMarkerFile);
+
+    for (const definitionFile of definitionFiles) {
+        visitDefinitionFileYamlAst(definitionFile, {
+            typeDeclaration: ({ declaration }) => {
+                if (typeof declaration === "string" || declaration.source == null) {
+                    return;
+                }
+                if (isRawProtobufSourceSchema(declaration.source)) {
+                    declaration.source.proto = modifySourceFilepath(declaration.source.proto);
+                    return;
+                }
+                declaration.source.openapi = modifySourceFilepath(declaration.source.openapi);
+            },
+            httpService: (service) => {
+                if (service.source == null) {
+                    return;
+                }
+                if (isRawProtobufSourceSchema(service.source)) {
+                    service.source.proto = modifySourceFilepath(service.source.proto);
+                    return;
+                }
+                service.source.openapi = modifySourceFilepath(service.source.openapi);
+            }
+        });
+    }
 }
 
 function getOptionsOverridesFromSettings(settings?: OSSWorkspace.Settings): Partial<ParseOpenAPIOptions> | undefined {

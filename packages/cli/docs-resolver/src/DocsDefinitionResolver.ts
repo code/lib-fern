@@ -89,6 +89,10 @@ export class DocsDefinitionResolver {
                 absolutePathToMdx: this.resolveFilepath(relativePath),
                 context: this.taskContext
             });
+        }
+
+        // replaces all instances of <Code src="path/to/file.js" /> with the content of the referenced code file
+        for (const [relativePath, markdown] of Object.entries(this.parsedDocsConfig.pages)) {
             this.parsedDocsConfig.pages[RelativeFilePath.of(relativePath)] = await replaceReferencedCode({
                 markdown,
                 absolutePathToFernFolder: this.docsWorkspace.absoluteFilepath,
@@ -251,7 +255,8 @@ export class DocsDefinitionResolver {
             redirects: this.parsedDocsConfig.redirects,
             integrations: this.parsedDocsConfig.integrations,
             footerLinks: this.parsedDocsConfig.footerLinks,
-
+            defaultLanguage: this.parsedDocsConfig.defaultLanguage,
+            analyticsConfig: this.parsedDocsConfig.analyticsConfig,
             // deprecated
             logo: undefined,
             logoV2: undefined,
@@ -365,7 +370,9 @@ export class DocsDefinitionResolver {
                     keywords: undefined,
                     smartCasing: false,
                     disableExamples: false,
-                    readme: undefined
+                    readme: undefined,
+                    version: undefined,
+                    packageName: undefined
                 });
                 const apiDefinitionId = await this.registerApi({ ir, snippetsConfig });
                 const api = convertIrToApiDefinition(ir, apiDefinitionId);

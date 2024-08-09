@@ -1717,6 +1717,7 @@ exports[`migrateFromV23ToV22 migrates extensive 1`] = `
       "language": "X-Fern-Language",
       "sdkName": "X-Fern-SDK-Name",
       "sdkVersion": "X-Fern-SDK-Version",
+      "userAgent": undefined,
     },
   },
   "serviceTypeReferenceInfo": {
@@ -10002,6 +10003,7 @@ exports[`migrateFromV23ToV22 migrates extensive 1`] = `
           "requestBody": {
             "_visit": [Function],
             "contentType": undefined,
+            "extendedProperties": [],
             "extends": [],
             "extraProperties": false,
             "name": {
@@ -12889,6 +12891,7 @@ exports[`migrateFromV23ToV22 migrates extensive 1`] = `
       "shape": {
         "_type": "object",
         "_visit": [Function],
+        "extendedProperties": [],
         "extends": [],
         "extraProperties": false,
         "properties": [
@@ -13386,6 +13389,7 @@ exports[`migrateFromV23ToV22 migrates extensive 1`] = `
       "shape": {
         "_type": "object",
         "_visit": [Function],
+        "extendedProperties": [],
         "extends": [],
         "extraProperties": false,
         "properties": [
@@ -13796,6 +13800,7 @@ exports[`migrateFromV23ToV22 migrates extensive 1`] = `
       "shape": {
         "_type": "object",
         "_visit": [Function],
+        "extendedProperties": [],
         "extends": [],
         "extraProperties": false,
         "properties": [
@@ -14089,6 +14094,7 @@ exports[`migrateFromV23ToV22 migrates extensive 1`] = `
       "shape": {
         "_type": "object",
         "_visit": [Function],
+        "extendedProperties": [],
         "extends": [],
         "extraProperties": false,
         "properties": [
@@ -14701,6 +14707,7 @@ exports[`migrateFromV23ToV22 migrates extensive 1`] = `
       "shape": {
         "_type": "object",
         "_visit": [Function],
+        "extendedProperties": [],
         "extends": [],
         "extraProperties": false,
         "properties": [
@@ -15479,6 +15486,7 @@ exports[`migrateFromV23ToV22 migrates extensive 1`] = `
       "shape": {
         "_type": "object",
         "_visit": [Function],
+        "extendedProperties": [],
         "extends": [],
         "extraProperties": false,
         "properties": [
@@ -15667,6 +15675,7 @@ exports[`migrateFromV23ToV22 migrates extensive 1`] = `
       "shape": {
         "_type": "object",
         "_visit": [Function],
+        "extendedProperties": [],
         "extends": [],
         "extraProperties": false,
         "properties": [
